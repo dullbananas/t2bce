@@ -516,6 +516,10 @@ static int bce_vhci_enable_device(struct usb_hcd *hcd, struct usb_device *udev)
     pr_debug("t2bce_vhci: device_create port=%u dev=%u\n", udev->portnum, devid);
 
     vdev = kzalloc(sizeof(struct bce_vhci_device), GFP_KERNEL);
+
+    if (vdev == NULL)
+        return -ENOMEM;
+
     vhci->port_to_device[udev->portnum] = devid;
     vhci->devices[devid] = vdev;
 
