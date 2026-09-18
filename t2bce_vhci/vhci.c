@@ -511,9 +511,8 @@ static int bce_vhci_enable_device(struct usb_hcd *hcd, struct usb_device *udev)
 
     vdev = kzalloc(sizeof(struct bce_vhci_device), GFP_KERNEL);
 
-    if (vdev == NULL) {
+    if (vdev == NULL)
         return -ENOMEM;
-    }
 
     /* bridgeOS requires a firmware device id before endpoints are created. */
     if (bce_vhci_cmd_device_create(&vhci->cq, udev->portnum, &devid)) {
